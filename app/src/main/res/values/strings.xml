@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Petagramv3</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="menuContacto">Contacto</string>
+    <string name="menuAcerca">Acerca de</string>
+
+    <string name="tiNombre">Nombre</string>
+    <string name="tiEmail">Email destinatario</string>
+    <string name="tiComentario">Comentario</string>
+    <string name="tiPassword">Contraseña</string>
+    <string name="btnEnviar">Enviar Comentario</string>
+    <string name="tiMiEmail">Mi Gmail</string>
+    <string name="tvAcerca">Información sobre el desarrollador</string>
+    <string name="tvTexto">Soy Camilo Mandressi, y acabo de crear un Instagram para perros.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pnombre">Perro</string>
+    <string name="plikes">1</string>
+
+</resources>

@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.camilo.petagramv3.MainActivity">
+
+    <item android:id="@+id/menuContacto"
+        android:title="@string/menuContacto"
+        android:orderInCategory="10"
+        ></item>
+
+    <item android:id="@+id/menuAcerca"
+        android:title="@string/menuAcerca"
+        android:orderInCategory="11">
+
+    </item>
+</menu>

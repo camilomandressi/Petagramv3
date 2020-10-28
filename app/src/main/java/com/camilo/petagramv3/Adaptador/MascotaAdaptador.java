@@ -1,25 +1,31 @@
 package com.camilo.petagramv3.Adaptador;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.camilo.petagramv3.Pojo.Mascota;
-import com.camilo.petagramv3.R;
-
 import java.util.ArrayList;
+
+import com.camilo.petagramv3.R;
+import com.camilo.petagramv3.db.ConstructorMascotas;
+import com.camilo.petagramv3.Pojo.Mascota;
 
 public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.MascotaViewHolder> {
     ArrayList<Mascota> mascotas;
+    Activity activity;
 
 
     public MascotaAdaptador(ArrayList<Mascota> mascotas, FragmentActivity activity){
+        this.activity = activity;
         this.mascotas = mascotas;
     }
 
@@ -33,12 +39,23 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
 
     //asocia cada elemento de la lista con cada view
     @Override
-    public void onBindViewHolder(@NonNull MascotaViewHolder mascotaViewHolder, int position) {
-        Mascota mascota = mascotas.get(position);
+    public void onBindViewHolder(@NonNull final MascotaViewHolder mascotaViewHolder, int position) {
+        final Mascota mascota = mascotas.get(position);
         mascotaViewHolder.imgMascota.setImageResource(mascota.getFoto());
         mascotaViewHolder.tvNombreMascota.setText(mascota.getNombre());
-        mascotaViewHolder.tvContadorLikes.setText(String.valueOf(mascota.getLike()));
+        mascotaViewHolder.tvCounterLikes.setText(mascota.getLike());
 
+        mascotaViewHolder.btnLikeMascota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*mascota.addLikes(); comentar lineas */
+                /*Toast.makeText(activity,"Diste Like a: "+mascota.getNombre() + " Cuenta con "+ mascota.getLike() +" Likes.",Toast.LENGTH_SHORT).show();
+                mascotaViewHolder.tvCounterLikes.setText(mascota.getLike()); Comentar lineas*/
+                ConstructorMascotas constructorMascota = new ConstructorMascotas(activity);
+                constructorMascota.darLikeMascota(mascota);
+                mascotaViewHolder.tvCounterLikes.setText(String.valueOf(constructorMascota.obtenerLikesMascota(mascota)));
+            }
+        });
 
     }
 
@@ -51,13 +68,16 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
 
         private ImageView imgMascota;
         private TextView tvNombreMascota;
-        private TextView tvContadorLikes;
+        private TextView tvCounterLikes;
+        private ImageButton btnLikeMascota;
 
         public MascotaViewHolder(@NonNull View itemView) {
             super(itemView);
             imgMascota         = (ImageView) itemView.findViewById(R.id.imgMascota);
             tvNombreMascota    = (TextView) itemView.findViewById(R.id.tvNombreMascota);
-            tvContadorLikes    = (TextView) itemView.findViewById(R.id.tvContadorLikes);
+            tvCounterLikes    = (TextView) itemView.findViewById(R.id.tvContadorLikes);
+            btnLikeMascota = (ImageButton) itemView.findViewById(R.id.btnLikeMascota);
         }
     }
 }
+

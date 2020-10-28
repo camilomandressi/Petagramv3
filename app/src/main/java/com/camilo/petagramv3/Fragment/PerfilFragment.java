@@ -2,6 +2,8 @@ package com.camilo.petagramv3.Fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +16,8 @@ import android.widget.TextView;
 import com.camilo.petagramv3.Adaptador.MascotaAdaptador;
 import com.camilo.petagramv3.Pojo.Mascota;
 import com.camilo.petagramv3.R;
+import com.camilo.petagramv3.presentador.RecyclerViewPresenter;
+import com.camilo.petagramv3.presentador.iRecyclerViewPresenter;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.ArrayList;
@@ -45,14 +49,14 @@ public class PerfilFragment extends Fragment {
         rvPerfil  = (RecyclerView) vista.findViewById(R.id.rvMascotasGr);
 
         mascotas = new ArrayList <> ();
-        mascotas.add(new Mascota("Puppy",1,R.drawable.perro1));
-        mascotas.add(new Mascota("Ragnar", 0,R.drawable.perro2));
-        mascotas.add(new Mascota("Laika", 5,R.drawable.perro3));
-        mascotas.add(new Mascota("Scooby", 3,R.drawable.perro4));
-        mascotas.add(new Mascota("Rambo", 2, R.drawable.perro5));
-        mascotas.add(new Mascota("Floky", 6,R.drawable.perro7));
+        mascotas.add(new Mascota("Puppy","1", R.drawable.perro1));
+        mascotas.add(new Mascota("Ragnar", "0",R.drawable.perro2));
+        mascotas.add(new Mascota("Laika", "5",R.drawable.perro3));
+        mascotas.add(new Mascota("Scooby", "3",R.drawable.perro4));
+        mascotas.add(new Mascota("Rambo", "2", R.drawable.perro5));
+        mascotas.add(new Mascota("Floky", "6",R.drawable.perro7));
 
-        GridLayoutManager glm= new GridLayoutManager(getActivity(),3,GridLayoutManager.VERTICAL,false);
+        GridLayoutManager glm= new GridLayoutManager(getActivity(),2,GridLayoutManager.VERTICAL,false);
         rvPerfil.setLayoutManager(glm);
 
         MascotaAdaptador adaptador = new MascotaAdaptador(mascotas, getActivity());
